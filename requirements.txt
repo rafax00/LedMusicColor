@@ -1,0 +1,3 @@
+PyAudio==0.2.11
+magichue==0.2.9.2
+numpy==1.22.3
