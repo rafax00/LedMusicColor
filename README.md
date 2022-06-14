@@ -13,11 +13,11 @@ The script will listen to the microphone input, calculate the amplitude and the 
 pip install -r requirements.txt
 ```
 
-**Nmap:** https://nmap.org/download.html
+**Nmap:(Used to discover the led device in the network)** https://nmap.org/download.html
 
 **Used device**: https://www.amazon.com.br/Super-Colorida-Prova-Controle-Fonte/dp/B07XBTYGQ2/ref=pd_sbs_sccl_3_1/134-0645885-7430560
 
-Used to discover the led device in the network.
+
 
 ## How to run
 
