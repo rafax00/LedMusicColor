@@ -100,15 +100,15 @@ class AudioAnalyzer(Thread):
 
             frequency = round(frequencies[np.argmax(numpydata)], 2)
             Settings.audio_analyse = (self.number_to_note_name(frequency), brightness_value)
-            
             time.sleep(0.00001)
             
         self.stream.stop_stream()
         self.stream.close()
         self.audio_object.terminate()
 
-def change_collor(collor, brightness):
-    LedDevice.light.rgb = collor
+def change_color(color, brightness):
+    print((color, brightness))
+    LedDevice.light.rgb = color
     LedDevice.light.brightness = brightness
 
 def exec_command(command):
@@ -140,10 +140,7 @@ def connect():
 def run_analiser():
     analizer.run()
 
-def main():
-    connect()
-    analizer = AudioAnalyzer()
-    
+def main():    
     audio_analiser_thread = Thread(target=run_analiser)
     audio_analiser_thread.start()
     time.sleep(2)
@@ -160,7 +157,7 @@ def main():
            "G#": (0,179,255), #normal Blue
            "A": (0,255,128), #white green 
            "A#": (0,255,255), #ocean blue 
-           "B": (255,255,255), #White
+           "B": (255,255,255) #White
     }
 
     while True:
@@ -169,14 +166,15 @@ def main():
             continue
             
         (note, brightness) = Settings.audio_analyse
-        
+        print(LedDevice.light)
         if note != LedDevice.last_note and brightness != LedDevice.last_brightness:
             LedDevice.last_note = note
             LedDevice.last_brightness = brightness
-            change_collor(dic[note], brightness)
+            change_color(dic[note], brightness)
             
         else:
-            time.sleep(0.00001)
+            time.sleep(0.001)
         
-
+connect()
+analizer = AudioAnalyzer()
 main()
